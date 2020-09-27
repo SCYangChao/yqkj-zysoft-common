@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.yqkj</groupId>
     <artifactId>yqkj-zysoft-common</artifactId>
-    <version>1.0.0.Standard.RELEASE</version>
+    <version>1.0.RELEASE</version>
     <packaging>pom</packaging>
     <description>
         系统公用组件
@@ -19,8 +19,75 @@
         <main.version>1.0.RELEASE</main.version>
         <swagger2.version>2.8.0</swagger2.version>
         <fastjson.version>1.2.46</fastjson.version>
+        <apche.commons.version>3.10</apche.commons.version>
+        <java.version>1.8</java.version>
+        <project.code>utf-8</project.code>
     </properties>
+    <dependencies>
+        <!-- 公共类处理JAR -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.10</version>
+        </dependency>
+    </dependencies>
     <modules>
+        <module>yqkj-zysoft-common-config</module>
+        <module>yqkj-zysoft-common-util</module>
     </modules>
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.code}</encoding>
+                </configuration>
+            </plugin>
+            <!-- maven-resources-plugin -->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                    <execution>
+                        <id>copy-xmls</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/classes</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/src/main/java</directory>
+                                    <includes>
+                                        <include>**/*.xml</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- 打包source文件为jar文件 -->
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

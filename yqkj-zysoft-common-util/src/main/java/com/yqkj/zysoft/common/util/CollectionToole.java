@@ -1,8 +1,5 @@
 package com.yqkj.zysoft.common.util;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
-import org.springframework.beans.BeanUtils;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -13,7 +10,7 @@ import java.util.function.ToDoubleFunction;
 import java.util.stream.Collectors;
 
 public class CollectionToole {
-    private static Logger log = Logger.getLogger(CollectionToole.class);
+   /* private static Logger log = Logger.getLogger(CollectionToole.class);
 
     public static List EMPTY_LIST = new ArrayList<>(0);
 
@@ -22,12 +19,14 @@ public class CollectionToole {
 
     private static Map EMPTY_MAP = new HashMap<>(0);
 
-    /**
-     * 转换数组数据
-     * @param arrray
-     * @return
-     */
+    *//**
+     * @author yangchao.cool@gmail.comd
+     * @date 2020/9/27 14:26
+     * @description:
+     * @Param No such property: code for class: Script1
+     *//*
     public  static  List<String> convertToArray(String[] arrray){
+
         List<String> result = new ArrayList<>(arrray.length);
         for (int index =0;index <arrray.length; index++) {
             if(index == 0){
@@ -40,11 +39,12 @@ public class CollectionToole {
         return  result;
     }
 
-    /**
-     * 集合长度
-     * @param list
-     * @return
-     */
+    *//**
+     * @author yangchao.cool@gmail.comd
+     * @date 2020/9/27 14:23
+     * @description:
+     * @Param 
+     *//*
     public  static  Integer listSize(List list ){
         if(CollectionToole.isNull(list)){
             return  0;
@@ -52,23 +52,23 @@ public class CollectionToole {
         return  list.size();
     }
 
-    /**
+    *//**
      * 数组转换为List集合
      * @param array
      * @return
-     */
+     *//*
     public  static  List<Long>  convertToArray(Long[] array){
         List<Long> idList = Arrays.asList(array);
         return  idList;
     }
 
-    /**
+    *//**
      *
      * @param list
      * @param fn
      * @param <O>
      * @return
-     */
+     *//*
     public  static <O> String[] parseIdsArray(List<O> list , Function<O,String> fn) {
         if (!isNull(list)) {
 
@@ -83,13 +83,13 @@ public class CollectionToole {
         return null;
 
     }
-    /**
+    *//**
      * 切割
      * @param source
      * @param n
      * @param <T>
      * @return
-     */
+     *//*
     public static <T> List<List<T>> averageAssign(List<T> source, int n) {
         List<List<T>> result = new ArrayList<List<T>>();
         int remaider = source.size() % n;
@@ -111,7 +111,7 @@ public class CollectionToole {
         }
         return result;
     }
-    /**
+    *//**
      * @Description:
      * @param list
      * @param group
@@ -120,14 +120,14 @@ public class CollectionToole {
      * @throws
      * @author: yangchao.coo@gmail.com
      * @time:2019年6月13日 上午9:31:30
-     */
+     *//*
     public static <K, O >  Map<K , List<O>> groupList(List<O> list , Function<O , K> group){
         if (null == list) {
             return  new HashMap<>();
         }
         return  list.stream().collect(Collectors.groupingBy(group));
     }
-    /**
+    *//**
      * 求平均值
      *
      * @Description:
@@ -138,7 +138,7 @@ public class CollectionToole {
      * @throws
      * @author: yangchao.coo@gmail.com
      * @time:2019年6月11日 下午4:55:09
-     */
+     *//*
     public static <T , R> Double avgDouble(List<T> list , ToDoubleFunction<T> fn) {
 
         if (isNull(list)) {
@@ -150,11 +150,11 @@ public class CollectionToole {
         return list.stream().mapToDouble(fn).average().getAsDouble();
     }
 
-    /**
+    *//**
      *
      * @param ids
      * @return
-     */
+     *//*
     public  static  String convertToStringStr(List<String> ids) {
         StringBuffer stringBuffer = new StringBuffer();
         if(!CollectionToole.isNull(ids)) {
@@ -165,14 +165,14 @@ public class CollectionToole {
         }
         return stringBuffer.toString();
     }
-    /**
+    *//**
      *
      * @ClassName: CollectionToole
      * @Description:
      * @author yangchao.coo@gmail.com
      * @date 2020/1/8
      *
-     */
+     *//*
     public  static  String convertToString(List<Long> ids) {
         StringBuffer stringBuffer = new StringBuffer();
         if(!CollectionToole.isNull(ids)) {
@@ -183,7 +183,7 @@ public class CollectionToole {
         }
         return stringBuffer.toString();
     }
-    /**
+    *//**
      *
      *
      * @Description:
@@ -193,7 +193,7 @@ public class CollectionToole {
      * @throws
      * @author: yangchao.coo@gmail.com
      * @time:2019年6月11日 上午10:51:15
-     */
+     *//*
     public static List<Long> parseIds(String ids) {
         if (StringUtils.isNotBlank(ids)) {
 
@@ -222,7 +222,7 @@ public class CollectionToole {
 
     }
 
-    /**
+    *//**
      * @Description:
      * @param list
      * @param fn
@@ -231,7 +231,7 @@ public class CollectionToole {
      * @throws
      * @author: yangchao.coo@gmail.com
      * @time:2019年6月10日 上午10:09:39
-     */
+     *//*
     public static <T , K, V , R>  void excuteMethod(List<T> list ,Function<T, R> fn) {
 
         if (isNull(list)) {
@@ -248,7 +248,7 @@ public class CollectionToole {
 
     }
 
-    /**
+    *//**
      * 跟一个值另一个值
      * @param list
      * @param fn
@@ -258,7 +258,7 @@ public class CollectionToole {
      * @param <K>
      * @param <V>
      * @return
-     */
+     *//*
     public  static <T,K,V> List<T> initOneInfo(List<T> list , Function<T , K> fn , Function<T , Consumer<V>> consumer, Map<K , V> map) {
 
         if (null == list || null == map) {
@@ -287,7 +287,7 @@ public class CollectionToole {
         return list;
 
     }
-    /**
+    *//**
      * 过滤数据
      *
      * @Description:
@@ -298,7 +298,7 @@ public class CollectionToole {
      * @throws
      * @author: yangchao.coo@gmail.com
      * @time:2019年6月4日 上午10:21:24
-     */
+     *//*
     public  static <T> List<T> filterList(List<T> list , Predicate<T> pre) {
         if (isNull(list)) {
             return new ArrayList<>();
@@ -307,7 +307,7 @@ public class CollectionToole {
     }
 
 
-    /**
+    *//**
      * @Description:检查数组是否为空 如果为空则返回空集合
      * @param list
      * @return List<T>
@@ -315,7 +315,7 @@ public class CollectionToole {
      * @throws
      * @author: yangchao.coo@gmail.com
      * @time:2019年5月28日 下午5:00:34
-     */
+     *//*
     public  static <T> List<T> checkListAndReturnEmptyList(List<T> list) {
         if (isNull(list)) {
             return new ArrayList<>();
@@ -323,7 +323,7 @@ public class CollectionToole {
         return list;
     }
 
-    /**
+    *//**
      *
      * @Description:
      * @param list
@@ -333,7 +333,7 @@ public class CollectionToole {
      * @throws
      * @author: yangchao.coo@gmail.com
      * @time:2019年5月27日 上午10:35:12
-     */
+     *//*
     public static <T> Double sumDouble(List<T> list , Function<T, Double> fn) {
 
         if (isNull(list)) {
@@ -350,7 +350,7 @@ public class CollectionToole {
         return Double.valueOf(0);
 
     }
-    /**
+    *//**
      *
      *
      * @Description: list集合求和
@@ -361,7 +361,7 @@ public class CollectionToole {
      * @throws
      * @author: yangchao.coo@gmail.com
      * @time:2019年5月27日 上午10:33:21
-     */
+     *//*
     public static <T> Integer sumInteger(List<T> list , Function<T, Integer> fn) {
 
         if (isNull(list)) {
@@ -375,7 +375,7 @@ public class CollectionToole {
         return longList.stream().reduce(Integer::sum).get();
 
     }
-    /**
+    *//**
      *
      *
      * @Description:
@@ -385,7 +385,7 @@ public class CollectionToole {
      * @throws
      * @author: yangchao.coo@gmail.com
      * @time:2019年5月27日 上午10:28:46
-     */
+     *//*
     public static <T> List<T> listRever(List<T> list) {
 
         if (isNull(list)) {
@@ -402,7 +402,7 @@ public class CollectionToole {
         return result;
     }
 
-    /**
+    *//**
      * @Description:对象数据直接转换为Map数据结构
      * @param list
      * @return List<Map<String,Object>>
@@ -410,8 +410,8 @@ public class CollectionToole {
      * @throws
      * @author: yangchao.coo@gmail.com
      * @time:2019年5月23日 上午10:43:59
-     */
-	/*public static <T> List<Map<String , Object>> listConvertTopMap(List<T> list) {
+     *//*
+	*//*public static <T> List<Map<String , Object>> listConvertTopMap(List<T> list) {
 
 		if (Objects.isNull(list) || list.isEmpty()) {
 
@@ -437,9 +437,9 @@ public class CollectionToole {
 
 		return result;
 
-	}*/
+	}*//*
 
-    /**
+    *//**
      * 降序
      * @Description:
      * @param list
@@ -448,14 +448,14 @@ public class CollectionToole {
      * @throws
      * @author: yangchao.coo@gmail.com
      * @time:2019年5月22日 上午9:28:33
-     */
+     *//*
     public static <O> void sortDesc(List<O> list ,  Comparator<O> cm) {
         if (null == cm) {
             return;
         }
         sort(list , cm.reversed());
     }
-    /**
+    *//**
      * 降序
      * @Description:
      * @param list
@@ -464,7 +464,7 @@ public class CollectionToole {
      * @throws
      * @author: yangchao.coo@gmail.com
      * @time:2019年5月22日 上午9:28:33
-     */
+     *//*
     public static <O> List<O> sort(List<O> list ,  Comparator<O> cm) {
 
         if (Objects.isNull(list) || list.isEmpty()) {
@@ -473,14 +473,14 @@ public class CollectionToole {
         return list.stream().sorted(cm).collect(Collectors.toList());
 
     }
-    /**
+    *//**
      *  利用方法<T>
      * List<Object> 转换成Map<String , Object>
      * @param list
      * @param <K>
      * @param <T>
      * @return
-     */
+     *//*
     public static  <K , T , V> Map<K , V> convertMap( Set<T> list , Function<T , K> keyFn , Function<T , V> valueFn) {
 
         Map<K , V> result = new HashMap<>(list.size());
@@ -500,14 +500,14 @@ public class CollectionToole {
         return  result;
 
     }
-    /**
+    *//**
      *  利用方法<T>
      * List<Object> 转换成Map<String , Object>
      * @param list
      * @param <K>
      * @param <T>
      * @return
-     */
+     *//*
     public static  <K , T , V> Map<K , V> convertMap( List<T> list , Function<T , K> keyFn , Function<T , V> valueFn) {
 
         Map<K , V> result = new HashMap<>(list.size());
@@ -527,14 +527,14 @@ public class CollectionToole {
         return  result;
 
     }
-    /**
+    *//**
      * 列表转为另一个列表
      * @param list
      * @param fn
      * @param <T>
      * @param <R>
      * @return
-     */
+     *//*
     public  static  <T , R> Set<R> convertToSet(List<T> list , Function<T , R> fn) {
         if (Objects.isNull(list) || list.isEmpty()) {
             return new HashSet<>();
@@ -550,14 +550,14 @@ public class CollectionToole {
 
         return  resutlt;
     }
-    /**
+    *//**
      * 列表转为另一个列表
      * @param list
      * @param fn
      * @param <T>
      * @param <R>
      * @return
-     */
+     *//*
     public  static  <T , R> List<R> convertToList(Set<T> list , Function<T , R> fn) {
         if (Objects.isNull(list) || list.isEmpty()) {
             return new ArrayList<>();
@@ -565,14 +565,14 @@ public class CollectionToole {
         return  list.stream().map(fn).collect(Collectors.toList());
     }
 
-    /**
+    *//**
      * 列表转为另一个列表
      * @param list
      * @param fn
      * @param <T>
      * @param <R>
      * @return
-     */
+     *//*
     public  static  <T , R> List<R> convertToList(List<T> list , Function<T , R> fn) {
         if (Objects.isNull(list) || list.isEmpty()) {
             return new ArrayList<>();
@@ -580,7 +580,7 @@ public class CollectionToole {
         return  list.stream().map(fn).collect(Collectors.toList());
     }
 
-    /**
+    *//**
      * 对象拷贝
      *
      * @Description:
@@ -591,7 +591,7 @@ public class CollectionToole {
      * @throws
      * @author: yangchao.coo@gmail.com
      * @time:2019年5月16日 下午6:16:17
-     */
+     *//*
     public static <R , O> List<R> convertToObjectList(List<O> list , Class< R> r) {
 
         if (isNull(list)) {
@@ -610,7 +610,7 @@ public class CollectionToole {
 
         return result;
     }
-    /**
+    *//**
      * 对象拷贝
      *
      * @Description:
@@ -621,7 +621,7 @@ public class CollectionToole {
      * @throws
      * @author: yangchao.coo@gmail.com
      * @time:2019年5月16日 下午6:18:43
-     */
+     *//*
     public static <O , R> R convertToObject( O o, Class< R> r) {
 
         R temp = BeanUtils.instantiateClass(r);
@@ -631,7 +631,7 @@ public class CollectionToole {
         return temp;
 
     }
-    /**
+    *//**
      *
      *
      * @Description:
@@ -641,7 +641,7 @@ public class CollectionToole {
      * @throws
      * @author: yangchao.coo@gmail.com
      * @time:2019年5月22日 上午9:15:09
-     */
+     *//*
     public static <R , O> void copyObject(R source , O target) {
 
         if (Objects.isNull(source)) {
@@ -672,11 +672,11 @@ public class CollectionToole {
 
     }
 
-    /**
+    *//**
      * 解析Long 集合
      * @param list
      * @return
-     */
+     *//*
     public  static  List<Long> requirOneDataList(List<Long> list ) {
         if(CollectionToole.isNull(list)) {
             List<Long> ins = new ArrayList<>();
@@ -687,12 +687,12 @@ public class CollectionToole {
     }
 
 
-    /**
+    *//**
      * 对象转map
      * @param obj
      * @return
      * @throws Exception
-     */
+     *//*
     public static Map<String, Object> convertToMap(Object obj)
             throws Exception {
         Map<String, Object> map = new HashMap<String,Object>();
@@ -705,7 +705,7 @@ public class CollectionToole {
         }
         return  map;
     }
-
+*/
 
 
 
