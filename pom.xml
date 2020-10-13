@@ -35,6 +35,7 @@
         <module>yqkj-zysoft-common-util</module>
         <module>yqkj-zysoft-weixin</module>
         <module>yqkj-zysoft-framework</module>
+        <module>yqkj-zysoft-common-db</module>
     </modules>
     <build>
         <plugins>
