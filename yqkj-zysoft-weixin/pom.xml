@@ -8,7 +8,9 @@
         <version>1.0.RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <description>
+        微信上层公共
+    </description>
     <artifactId>yqkj-zysoft-weixin</artifactId>
 
 

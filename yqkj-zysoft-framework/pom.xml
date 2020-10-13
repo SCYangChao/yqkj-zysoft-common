@@ -6,10 +6,10 @@
         <artifactId>yqkj-zysoft-common</artifactId>
         <groupId>com.yqkj</groupId>
         <version>1.0.RELEASE</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>yqkj-zysoft-common-config</artifactId>
+
+    <artifactId>yqkj-zysoft-framework</artifactId>
 
 
 </project>

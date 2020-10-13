@@ -32,9 +32,9 @@
         </dependency>
     </dependencies>
     <modules>
-        <module>yqkj-zysoft-common-config</module>
         <module>yqkj-zysoft-common-util</module>
         <module>yqkj-zysoft-weixin</module>
+        <module>yqkj-zysoft-framework</module>
     </modules>
     <build>
         <plugins>
