@@ -1,6 +1,6 @@
 package com.yqkj.zysoft.common.collection;
 
-import org.apache.commons.lang3.StringUtils;
+import com.yqkj.zysoft.common.string.StringUtil;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -34,7 +34,6 @@ public class CollectionToole {
         }
         return  result;
     }
-
     /**
      * 集合长度
      * @param list
@@ -144,7 +143,6 @@ public class CollectionToole {
 
         return list.stream().mapToDouble(fn).average().getAsDouble();
     }
-
     /**
      *
      * @param ids
@@ -190,7 +188,7 @@ public class CollectionToole {
      * @time:2019年6月11日 上午10:51:15
      */
     public static List<Long> parseIds(String ids) {
-        if (StringUtils.isNotBlank(ids)) {
+        if (StringUtil.isNotBlank(ids)) {
 
             String[] ar = ids.split(",");
 
@@ -199,7 +197,7 @@ public class CollectionToole {
             for (String n : ar) {
 
                 try {
-                    if (StringUtils.isNotBlank(n)) {
+                    if (StringUtil.isNotBlank(n)) {
 
                         result.add(Long.valueOf(n));
 
@@ -274,7 +272,6 @@ public class CollectionToole {
                 V value =  null;
 
                 consumer.apply(t).accept(value);
-
 
             }
 

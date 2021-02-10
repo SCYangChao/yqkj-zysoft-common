@@ -1,7 +1,5 @@
 package com.yqkj.zysoft.common.tree;
 
-import com.yqkj.zysoft.common.dto.TreeNode;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -11,7 +9,7 @@ import java.util.Objects;
  * @copyright: Copyright (c) 2020
  * @company: 扬起科技有限公司
  * @date 2020/9/27 14:10
- * @description: 
+ * @description:
  */
 public class TreeToole {
     /**
@@ -27,12 +25,12 @@ public class TreeToole {
 
         for (T treeNode : treeNodes) {
 
-            if (treeNode.eqParent(root)) {
+            if (treeNode.eqPId(root)) {
                 trees.add(treeNode);
             }
 
             for (T it : treeNodes) {
-                if (it.getParentId() == treeNode.getId()) {
+                if (it.getpId() == treeNode.getId()) {
                     if (Objects.isNull(treeNode.getChildren())) {
                         treeNode.setChildren(new ArrayList<>());
                     }
@@ -53,7 +51,7 @@ public class TreeToole {
     public static <T extends TreeNode> List<T> buildByRecursive(List<T> treeNodes, Object root) {
         List<T> trees = new ArrayList<>();
         for (T treeNode : treeNodes) {
-            if (root.equals(treeNode.getParentId())) {
+            if (root.equals(treeNode.getpId())) {
                 trees.add(findChildren(treeNode, treeNodes));
             }
         }
@@ -66,7 +64,7 @@ public class TreeToole {
      */
     public static <T extends TreeNode> T findChildren(T treeNode, List<T> treeNodes) {
         for (T it : treeNodes) {
-            if (treeNode.getId() == it.getParentId()) {
+            if (treeNode.getId() == it.getpId()) {
                 if (treeNode.getChildren() == null) {
                     treeNode.setChildren(new ArrayList<TreeNode>());
                 }
