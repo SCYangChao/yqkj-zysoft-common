@@ -14,6 +14,8 @@
     </description>
     <modules>
         <module>zysoft-weixin-common</module>
+        <module>zysoft-weixin-spring</module>
+        <module>yqkj-zysoft-weixin-demo</module>
     </modules>
     <artifactId>yqkj-zysoft-weixin</artifactId>
 
