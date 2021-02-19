@@ -1,5 +1,7 @@
 package com.yqkj.zysoft.weixin.common.annotation;
 
+import com.yqkj.zysoft.weixin.common.enums.ProxyEnum;
+
 import java.lang.annotation.*;
 
 /**
@@ -18,6 +20,15 @@ public @interface EnableWeixin {
      * @return
      */
     String[] basePackage() default {};
-
+    /**
+     * 代理类型
+     * @return
+     */
+    ProxyEnum proxyType() default ProxyEnum.CGLIB;
+    /**
+     * 微信基础URL
+     * @return
+     */
+    String baseUrl() default  "https://api.weixin.qq.com";
 
 }

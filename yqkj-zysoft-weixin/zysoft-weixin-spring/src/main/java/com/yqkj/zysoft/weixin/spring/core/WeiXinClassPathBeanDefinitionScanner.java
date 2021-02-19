@@ -2,10 +2,10 @@ package com.yqkj.zysoft.weixin.spring.core;
 
 import com.yqkj.zysoft.common.collection.CollectionToole;
 import com.yqkj.zysoft.weixin.common.annotation.WeiXinClient;
+import com.yqkj.zysoft.weixin.common.enums.ProxyEnum;
 import com.yqkj.zysoft.weixin.spring.factory.WeiXinFactoryBean;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
-import org.springframework.beans.factory.config.RuntimeBeanReference;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.context.annotation.ClassPathBeanDefinitionScanner;
@@ -22,6 +22,9 @@ import java.util.Set;
  **/
 public class WeiXinClassPathBeanDefinitionScanner extends ClassPathBeanDefinitionScanner {
 
+    private ProxyEnum proxyEnum;
+
+    private String baseUrl;
 
     public WeiXinClassPathBeanDefinitionScanner(BeanDefinitionRegistry registry) {
         super(registry);
@@ -38,6 +41,8 @@ public class WeiXinClassPathBeanDefinitionScanner extends ClassPathBeanDefinitio
            for (BeanDefinitionHolder beanDefinitionHolder : beanDefinitionHolders) {
                definition = (GenericBeanDefinition) beanDefinitionHolder.getBeanDefinition();
                definition.getPropertyValues().add("interfaceBean",definition.getBeanClassName());
+               definition.getPropertyValues().add("proxyEnum" , proxyEnum);
+               definition.getPropertyValues().add("baseUrl" , baseUrl);
                definition.setBeanClass(WeiXinFactoryBean.class);
            }
 
@@ -54,5 +59,21 @@ public class WeiXinClassPathBeanDefinitionScanner extends ClassPathBeanDefinitio
     @Override
     protected boolean isCandidateComponent(AnnotatedBeanDefinition beanDefinition) {
         return beanDefinition.getMetadata().isInterface() && beanDefinition.getMetadata().isIndependent();
+    }
+
+    public String getBaseUrl() {
+        return baseUrl;
+    }
+
+    public void setBaseUrl(String baseUrl) {
+        this.baseUrl = baseUrl;
+    }
+
+    public ProxyEnum getProxyEnum() {
+        return proxyEnum;
+    }
+
+    public void setProxyEnum(ProxyEnum proxyEnum) {
+        this.proxyEnum = proxyEnum;
     }
 }

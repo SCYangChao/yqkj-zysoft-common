@@ -1,10 +1,15 @@
 package com.yqkj.zysoft.weixin.spring.core;
 
-import com.yqkj.zysoft.weixin.spring.factory.WeiXinFactoryBean;
+import com.yqkj.zysoft.common.collection.CollectionToole;
+import com.yqkj.zysoft.common.string.StringUtil;
+import com.yqkj.zysoft.common.system.PropertyTool;
+import com.yqkj.zysoft.weixin.common.enums.ProxyEnum;
+import com.yqkj.zysoft.weixin.spring.anotation.EnableWeiXinSpring;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
 import org.springframework.context.ResourceLoaderAware;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
+import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.type.AnnotationMetadata;
 
@@ -33,10 +38,22 @@ public class WeiXinBeanDefinitionRegistrar implements ImportBeanDefinitionRegist
      */
     @Override
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
-        WeiXinClassPathBeanDefinitionScanner weiXinClassPathBeanDefinitionScanner = new WeiXinClassPathBeanDefinitionScanner(registry);
-        weiXinClassPathBeanDefinitionScanner.registerFilters();
-        weiXinClassPathBeanDefinitionScanner.setResourceLoader(resourceLoader);
-        weiXinClassPathBeanDefinitionScanner.doScan("com.yqkj.zysoft.weixin.demo");
+        AnnotationAttributes annotationAttributes = AnnotationAttributes.fromMap(importingClassMetadata.getAnnotationAttributes(EnableWeiXinSpring.class.getName()));
+        String[] basePackage = annotationAttributes.getStringArray("basePackage");
+        ProxyEnum proxyEnum = annotationAttributes.getEnum("proxyType");
+        String baseUrl = annotationAttributes.getString("baseUrl");
+        if(CollectionToole.isNull(basePackage)){
+            basePackage = PropertyTool.getBasePackage();
+        }
+
+        if(!CollectionToole.isNull((basePackage))) {
+            WeiXinClassPathBeanDefinitionScanner weiXinClassPathBeanDefinitionScanner = new WeiXinClassPathBeanDefinitionScanner(registry);
+            weiXinClassPathBeanDefinitionScanner.registerFilters();
+            weiXinClassPathBeanDefinitionScanner.setResourceLoader(resourceLoader);
+            weiXinClassPathBeanDefinitionScanner.setProxyEnum(proxyEnum);
+            weiXinClassPathBeanDefinitionScanner.setBaseUrl(baseUrl);
+            weiXinClassPathBeanDefinitionScanner.doScan(basePackage);
+        }
     }
 
     @Override

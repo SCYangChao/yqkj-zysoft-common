@@ -16,10 +16,11 @@ import javax.annotation.Resource;
 public class WeiXinService {
     @Resource
     private WeinXinAuth weinXinAuth;
+
     @GetMapping("wexin")
     public  Boolean auth(){
         weinXinAuth.getAccessToken();
-        System.out.println(weinXinAuth);
+//        System.out.println(weinXinAuth);
         return  Boolean.TRUE;
     }
 

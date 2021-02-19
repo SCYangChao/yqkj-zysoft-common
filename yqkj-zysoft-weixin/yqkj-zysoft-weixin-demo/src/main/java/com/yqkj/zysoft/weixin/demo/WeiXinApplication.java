@@ -1,7 +1,7 @@
 package com.yqkj.zysoft.weixin.demo;
 
 import com.yqkj.zysoft.weixin.demo.wein.WeinXinAuth;
-import com.yqkj.zysoft.weixin.spring.anotation.EnableWeixinSpring;
+import com.yqkj.zysoft.weixin.spring.anotation.EnableWeiXinSpring;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -15,7 +15,7 @@ import javax.annotation.Resource;
  * @Version 1.0
  **/
 @SpringBootApplication(scanBasePackages = "com")
-@EnableWeixinSpring
+@EnableWeiXinSpring
 public class WeiXinApplication {
 
     @Resource

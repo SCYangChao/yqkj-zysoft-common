@@ -644,7 +644,21 @@ public class CollectionToole {
         }
 //        BeanTool.copyObject(source, target, null, (String[]) null);
     }
+    /**
+     * 数组为空
+     * @param t
+     * @param <T>
+     * @return
+     */
+    public  static<T>  Boolean isNull(T[] t) {
 
+        if (null == t || t.length <=0) {
+            return  Boolean.TRUE;
+        }
+
+        return Boolean.FALSE;
+
+    }
     public  static<T>  Boolean isNull(Set<T> t) {
 
         if (null == t || t.isEmpty()) {
