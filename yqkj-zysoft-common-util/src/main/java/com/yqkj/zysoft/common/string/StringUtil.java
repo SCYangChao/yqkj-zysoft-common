@@ -12,6 +12,14 @@ import java.util.Objects;
  */
 public class StringUtil {
     /**
+     * 是否有字符长度 如果有则返回True 没有测试返回Fals
+     * @param str
+     * @return
+     */
+    public  static  Boolean hasLength(String str){
+        return  len(str) > 0;
+    }
+    /**
      * 字符串长度
      * @param str
      * @return

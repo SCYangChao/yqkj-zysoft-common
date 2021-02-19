@@ -642,7 +642,32 @@ public class CollectionToole {
             return ;
 
         }
-//        BeanTool.copyObject(source, target, null, (String[]) null);
+    }
+    /**
+     * @param t
+     * @param <T>
+     * @return
+     */
+    public  static<T>  Boolean isNull(Collection t) {
+        if (Objects.isNull(t) || t.isEmpty()) {
+            return  Boolean.TRUE;
+        }
+
+        return Boolean.FALSE;
+
+    }
+    /**
+     * @param t
+     * @param <T>
+     * @return
+     */
+    public  static<T>  Boolean isNull(Map t) {
+        if (Objects.isNull(t) || t.isEmpty()) {
+            return  Boolean.TRUE;
+        }
+
+        return Boolean.FALSE;
+
     }
     /**
      * 数组为空
