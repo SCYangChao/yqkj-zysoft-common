@@ -79,6 +79,7 @@
         <module>yqkj-zysoft-weixin</module>
         <module>yqkj-zysoft-framework</module>
         <module>yqkj-zysoft-common-db</module>
+        <module>yqkj-zysoft-common-cache</module>
     </modules>
     <build>
         <plugins>
