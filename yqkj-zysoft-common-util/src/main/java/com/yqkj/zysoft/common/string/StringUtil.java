@@ -12,6 +12,21 @@ import java.util.Objects;
  */
 public class StringUtil {
     /**
+     * 根据字符串长度截取字符串长度
+     * @param str
+     * @param len
+     * @return
+     */
+    public  static  String cutLenStr(String str , Integer len){
+        if(Objects.isNull(len)){
+            return str;
+        }
+        if(len(str) > len){
+            return  str.substring(0 , len);
+        }
+        return  str;
+    }
+    /**
      * 是否有字符长度 如果有则返回True 没有测试返回Fals
      * @param str
      * @return

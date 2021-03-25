@@ -1,7 +1,7 @@
 package com.yqkj.zysoft.common.cache.core.annotation;
 
 import com.yqkj.zysoft.common.cache.ICacheProcessor;
-import com.yqkj.zysoft.common.cache.redis.RedisCacheProcessor;
+import com.yqkj.zysoft.common.cache.memory.MemoryCacheProcessor;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -37,5 +37,5 @@ public @interface HCache {
      * 策略
      * @return
      */
-    Class<? extends ICacheProcessor> strategy() default RedisCacheProcessor.class;
+    Class<? extends ICacheProcessor> strategy() default MemoryCacheProcessor.class;
 }

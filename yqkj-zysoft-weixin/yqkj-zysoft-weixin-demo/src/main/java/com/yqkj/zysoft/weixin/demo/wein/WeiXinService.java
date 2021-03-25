@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 /**
  * @ClassName WeiXinService
@@ -19,8 +20,8 @@ public class WeiXinService {
 
     @GetMapping("wexin")
     public  Boolean auth(){
-        weinXinAuth.getAccessToken();
-//        System.out.println(weinXinAuth);
+        Map<String, Object> accessToken = weinXinAuth.getAccessToken();
+        System.out.println(accessToken);
         return  Boolean.TRUE;
     }
 
