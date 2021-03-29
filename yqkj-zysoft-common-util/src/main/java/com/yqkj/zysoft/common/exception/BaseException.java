@@ -11,7 +11,7 @@ public abstract class BaseException extends  RuntimeException{
     /**
      * 系统编码
      */
-    protected String sysCode;
+    protected String sysCode = "base";
     /**
      * 错误编码
      */
@@ -20,4 +20,28 @@ public abstract class BaseException extends  RuntimeException{
      * 错误信息
      */
     protected String errorMsg;
+
+    public String getSysCode() {
+        return sysCode;
+    }
+
+    public void setSysCode(String sysCode) {
+        this.sysCode = sysCode;
+    }
+
+    public String getErrorCode() {
+        return errorCode;
+    }
+
+    public void setErrorCode(String errorCode) {
+        this.errorCode = errorCode;
+    }
+
+    public String getErrorMsg() {
+        return errorMsg;
+    }
+
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
+    }
 }

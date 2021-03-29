@@ -13,4 +13,10 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface WeiXinClient {
+    /**
+     * 用户得默认接口地址
+     * @return
+     */
+    String apiUrl() default "https://api.weixin.qq.com/";
+
 }

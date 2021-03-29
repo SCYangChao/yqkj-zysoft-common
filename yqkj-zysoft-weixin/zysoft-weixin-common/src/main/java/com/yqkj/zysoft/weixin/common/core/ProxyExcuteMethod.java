@@ -1,8 +1,13 @@
 package com.yqkj.zysoft.weixin.common.core;
 
+import com.yqkj.zysoft.weixin.common.annotation.http.WeinXinGet;
+import com.yqkj.zysoft.weixin.common.annotation.http.WeinXinPost;
+import com.yqkj.zysoft.weixin.common.exception.UnKnowMatchRequestMethodException;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * @ClassName ProxyExcuteMethod
@@ -21,6 +26,12 @@ public class ProxyExcuteMethod {
      */
     public  static  Object proxyInvoke(Method method, Object[] object, Object proxy , String baseUrl){
         Annotation[] annotations = method.getAnnotations();
+        WeinXinGet annotationGet = method.getAnnotation(WeinXinGet.class);
+        WeinXinPost annotationPost = method.getAnnotation(WeinXinPost.class);
+        if(!Objects.isNull(annotationGet) && !Objects.isNull(annotationPost)){
+            throw  new UnKnowMatchRequestMethodException();
+        }
+
         return  new HashMap<>();
     }
 
