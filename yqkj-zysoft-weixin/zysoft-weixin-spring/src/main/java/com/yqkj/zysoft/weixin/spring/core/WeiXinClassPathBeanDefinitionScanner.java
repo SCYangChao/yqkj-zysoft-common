@@ -30,13 +30,13 @@ public class WeiXinClassPathBeanDefinitionScanner extends ClassPathBeanDefinitio
         super(registry);
     }
 
-    protected void registerFilters(){
+    protected void registerFilters() {
         addIncludeFilter(new AnnotationTypeFilter(WeiXinClient.class));
     }
     @Override
     protected Set<BeanDefinitionHolder> doScan(String... basePackages) {
         Set<BeanDefinitionHolder> beanDefinitionHolders = super.doScan(basePackages);
-        if(!CollectionToole.isNull(beanDefinitionHolders)){
+        if (!CollectionToole.isNull(beanDefinitionHolders)) {
             GenericBeanDefinition definition;
            for (BeanDefinitionHolder beanDefinitionHolder : beanDefinitionHolders) {
                definition = (GenericBeanDefinition) beanDefinitionHolder.getBeanDefinition();

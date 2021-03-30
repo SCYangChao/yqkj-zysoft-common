@@ -29,7 +29,7 @@ public class HCacheTool {
         StringBuilder keySb = new StringBuilder();
 
         keySb.append(springEnv.getApplicationName());
-        if(StringUtils.isNotBlank(path)){
+        if (StringUtils.isNotBlank(path)) {
             keySb.append(":").append(path);
         }else {
             keySb.append(":").append(name);
@@ -43,10 +43,10 @@ public class HCacheTool {
      * @param args
      * @return
      */
-    public  static  EvaluationContext getEvaluationContext(String[] argNames , Object[] args){
+    public  static  EvaluationContext getEvaluationContext(String[] argNames , Object[] args) {
         EvaluationContext context = new StandardEvaluationContext();
-        if(!Objects.isNull(argNames) && argNames.length > 0){
-            for (int index =0; index< argNames.length; index ++ ){
+        if (!Objects.isNull(argNames) && argNames.length > 0) {
+            for (int index =0; index< argNames.length; index ++ ) {
                 context.setVariable(argNames[index] , args[index]);
             }
         }
@@ -59,11 +59,11 @@ public class HCacheTool {
      * @return
      */
     public static String getKey(EvaluationContext context, String key , String path) {
-        if(StringUtils.isBlank(key)){
+        if (StringUtils.isBlank(key)) {
             return path;
         }
         String value = getSpelValue(context, key);
-        if(StringUtils.isNotBlank(value)){
+        if (StringUtils.isNotBlank(value)) {
             return String.format("%s:%s" , path , value);
         }
         return path;
@@ -76,11 +76,11 @@ public class HCacheTool {
      * @return
      */
     public static String getEvictKey(EvaluationContext context, String key , String path) {
-        if(StringUtils.isBlank(key)){
+        if (StringUtils.isBlank(key)) {
             return String.format("%s:%s" , path , "*");
         }
         String value = getSpelValue(context, key);
-        if(StringUtils.isNotBlank(value)){
+        if (StringUtils.isNotBlank(value)) {
             return String.format("%s:%s" , path , value);
         }
         return String.format("%s:%s" , path , "*");

@@ -573,7 +573,12 @@ public abstract class Assert {
         isAssignable(superType, subType, "");
     }
 
-
+    /**
+     *
+     * @param type 类
+     * @param obj 对象
+     * @param msg 提示信息
+     */
     private static void instanceCheckFailed(Class<?> type, Object obj, String msg) {
         String className = (obj != null ? obj.getClass().getName() : "null");
         String result = "";
@@ -593,6 +598,12 @@ public abstract class Assert {
         throw new IllegalArgumentException(result);
     }
 
+    /**
+     *
+     * @param superType 类
+     * @param subType 类
+     * @param msg 提示信息
+     */
     private static void assignableCheckFailed(Class<?> superType, Class<?> subType, String msg) {
         String result = "";
         boolean defaultMessage = true;
@@ -611,14 +622,29 @@ public abstract class Assert {
         throw new IllegalArgumentException(result);
     }
 
+    /**
+     * 是否以特殊符号结束
+     * @param msg 内容
+     * @return
+     */
     private static boolean endsWithSeparator(String msg) {
         return (msg.endsWith(":") || msg.endsWith(";") || msg.endsWith(",") || msg.endsWith("."));
     }
 
+    /**
+     * @param msg
+     * @param typeName
+     * @return
+     */
     private static String messageWithTypeName(String msg, Object typeName) {
         return msg + (msg.endsWith(" ") ? "" : ": ") + typeName;
     }
 
+    /**
+     *
+     * @param messageSupplier
+     * @return
+     */
     private static String nullSafeGet(Supplier<String> messageSupplier) {
         return (messageSupplier != null ? messageSupplier.get() : null);
     }

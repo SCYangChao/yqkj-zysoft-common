@@ -29,15 +29,15 @@ public class ExpressionTool {
      * @param args
      * @return
      */
-    public  static  EvaluationContext getEvaluationContext(String[] argNames , Object[] args , Object result , String userName, HttpServletRequest request){
+    public  static  EvaluationContext getEvaluationContext(String[] argNames , Object[] args , Object result , String userName, HttpServletRequest request) {
         EvaluationContext context = new StandardEvaluationContext();
-        if(!Objects.isNull(argNames) && argNames.length > 0){
-            for (int index =0; index< argNames.length; index ++ ){
+        if (!Objects.isNull(argNames) && argNames.length > 0) {
+            for (int index =0; index< argNames.length; index ++ ) {
                 context.setVariable(argNames[index] , args[index]);
             }
         }
-        if(!Objects.isNull(result)){
-            if(result instanceof ResponseEntity){
+        if (!Objects.isNull(result)) {
+            if (result instanceof ResponseEntity) {
                 Object body = ((ResponseEntity) result).getBody();
                 context.setVariable("result", body);
             }else {
@@ -46,7 +46,7 @@ public class ExpressionTool {
         }
         Map<String, String[]> parameterMap = request.getParameterMap();
         Map<String , String> requestMap = new HashMap<>();
-        if(!CollectionUtils.isEmpty(parameterMap)){
+        if (!CollectionUtils.isEmpty(parameterMap)) {
             parameterMap.forEach((k,v)->{
                 requestMap.put(k,request.getParameter(k));
             });
@@ -66,7 +66,7 @@ public class ExpressionTool {
             ExpressionParser parser = new SpelExpressionParser();
             Expression expression = parser.parseExpression(key ,new TemplateParserContext());
             return expression.getValue(context, String.class);
-        }catch (Exception e){
+        }catch (Exception e) {
             return  e.getMessage();
         }
     }
@@ -81,7 +81,7 @@ public class ExpressionTool {
             ExpressionParser parser = new SpelExpressionParser();
             Expression expression = parser.parseExpression(key);
             return expression.getValue(context, Boolean.class);
-        }catch (Exception e){
+        }catch (Exception e) {
             return  Boolean.FALSE;
         }
     }

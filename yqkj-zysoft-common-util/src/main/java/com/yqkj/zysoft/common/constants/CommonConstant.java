@@ -1,4 +1,9 @@
 package com.yqkj.zysoft.common.constants;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
 /**
  * @ClassName CommonConstant
  * @Description
@@ -6,13 +11,29 @@ package com.yqkj.zysoft.common.constants;
  * @Date 2020/2/10 14:13
  * @Version 1.0
  **/
-public interface CommonConstant {
+public final class CommonConstant {
+
+    private CommonConstant() {
+    }
+
+    /**
+     * 空集合
+     */
+    public static  final  List EMPTY_LIST = Collections.EMPTY_LIST;
+    /**
+     * 空MAp
+     */
+    public static  final   Map EMPTY_MAP = Collections.EMPTY_MAP;
     /**
      *正在执行的类
      */
-    String CURRENT_CLASS = "sun.java.command";
+    public static  final   String CURRENT_CLASS = "sun.java.command";
     /**
      * 空字符串
      */
-    String EMPTY_STRING = "";
+    public static  final  String EMPTY_STRING = "";
+    /**
+     * -1
+     */
+    public static  final Long LOSS_ONE = -1L;
 }

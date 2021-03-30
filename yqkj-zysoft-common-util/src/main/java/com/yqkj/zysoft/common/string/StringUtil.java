@@ -10,18 +10,22 @@ import java.util.Objects;
  * @date 2020/9/27 16:25
  * @description: 字符串处理子， 对字符串处理包装 后期字符串处理切换处理包，与出现性能问题方便进行优化
  */
-public class StringUtil {
+public final class StringUtil {
+
+    private StringUtil() {
+    }
+
     /**
      * 根据字符串长度截取字符串长度
      * @param str
      * @param len
      * @return
      */
-    public  static  String cutLenStr(String str , Integer len){
-        if(Objects.isNull(len)){
+    public  static  String cutLenStr(String str , Integer len) {
+        if (Objects.isNull(len)) {
             return str;
         }
-        if(len(str) > len){
+        if (len(str) > len) {
             return  str.substring(0 , len);
         }
         return  str;
@@ -31,7 +35,7 @@ public class StringUtil {
      * @param str
      * @return
      */
-    public  static  Boolean hasLength(String str){
+    public  static  Boolean hasLength(String str) {
         return  len(str) > 0;
     }
     /**
@@ -39,8 +43,8 @@ public class StringUtil {
      * @param str
      * @return
      */
-    public  static  Integer len(String str){
-        if(isEmpty(str)){
+    public  static  Integer len(String str) {
+        if (isEmpty(str)) {
             return  Integer.valueOf(0);
         }
         return  str.length();
@@ -50,7 +54,7 @@ public class StringUtil {
      * @param str
      * @return
      */
-    public static  Boolean isNotBlank(String str){
+    public static  Boolean isNotBlank(String str) {
         return  !isBlank(str);
     }
     /**
@@ -58,8 +62,8 @@ public class StringUtil {
      * @param str
      * @return
      */
-    public  static  Boolean isBlank(String str){
-        if(Objects.isNull(str)){
+    public  static  Boolean isBlank(String str) {
+        if (Objects.isNull(str)) {
             return  Boolean.TRUE;
         }
         return  isEmpty(str.trim());
@@ -69,7 +73,7 @@ public class StringUtil {
      * @param str
      * @return
      */
-    public  static  Boolean isNotEmpty(String str){
+    public  static  Boolean isNotEmpty(String str) {
         return  !isEmpty(str);
     }
     /**
@@ -77,11 +81,11 @@ public class StringUtil {
      * @param str
      * @return
      */
-    public static   Boolean  isEmpty(String str){
-        if(Objects.isNull(str)){
+    public static   Boolean  isEmpty(String str) {
+        if (Objects.isNull(str)) {
             return Boolean.TRUE;
         }
-        if(str.length()==0){
+        if (str.length()==0) {
             return Boolean.TRUE;
         }
         return Boolean.FALSE;

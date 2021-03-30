@@ -24,11 +24,11 @@ public class ProxyExcuteMethod {
      * 当前执行方法所需的参数
      * 和被代理对象方法有相同的返回值
      */
-    public  static  Object proxyInvoke(Method method, Object[] object, Object proxy , String baseUrl){
+    public  static  Object proxyInvoke(Method method, Object[] object, Object proxy , String baseUrl) {
         Annotation[] annotations = method.getAnnotations();
         WeinXinGet annotationGet = method.getAnnotation(WeinXinGet.class);
         WeinXinPost annotationPost = method.getAnnotation(WeinXinPost.class);
-        if(!Objects.isNull(annotationGet) && !Objects.isNull(annotationPost)){
+        if (!Objects.isNull(annotationGet) && !Objects.isNull(annotationPost)) {
             throw  new UnKnowMatchRequestMethodException();
         }
 

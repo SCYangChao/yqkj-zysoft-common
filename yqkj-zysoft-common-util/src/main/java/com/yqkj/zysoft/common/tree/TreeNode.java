@@ -39,14 +39,14 @@ public class TreeNode <Id , PId> implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    public  Boolean eqPId(Id id){
-        if(Objects.isNull(pId) && Objects.isNull(id)){
+    public  Boolean eqPId(Id id) {
+        if (Objects.isNull(pId) && Objects.isNull(id)) {
             return Boolean.TRUE;
         }
-        if(Objects.isNull(id)){
+        if (Objects.isNull(id)) {
             return Boolean.FALSE;
         }
-        if(id.equals(pId)){
+        if (id.equals(pId)) {
             return Boolean.TRUE;
         }
         return  Boolean.FALSE;

@@ -46,7 +46,7 @@ public class InitLogConfig implements InitializingBean , ApplicationContextAware
              * 日志
              */
             LogProcessor.run();
-        }catch (Exception e){
+        }catch (Exception e) {
             e.printStackTrace();
         }
 

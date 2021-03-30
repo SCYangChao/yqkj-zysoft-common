@@ -62,18 +62,18 @@ public class LogProcessor  {
         WRITELOGQUEUE = new LinkedBlockingQueue<>();
         iPersistentLog = persistentLog;
         iQueryCurrentUser = queryCurrentUser;
-        if(Objects.isNull(iPersistentLog) || Objects.isNull(queryCurrentUser)){
+        if (Objects.isNull(iPersistentLog) || Objects.isNull(queryCurrentUser)) {
         }
     }
     /**
      * 日志写入
      */
-    public  static  void run(){
+    public  static  void run() {
         WRITELOG_EXECUTOR.submit((Runnable) () -> {
             while (true) {
                 try {
                     WriteLogDto poll = WRITELOGQUEUE.poll(20, TimeUnit.SECONDS);
-                    if(!Objects.isNull(poll)) {
+                    if (!Objects.isNull(poll)) {
                         iQueryCurrentUser.getCurrentUser(poll);
                         poll.setInput(StringUtil.cutLenStr(poll.getInput() , 512));
                         poll.setContent(StringUtil.cutLenStr(poll.getContent() , 2000));
@@ -94,9 +94,9 @@ public class LogProcessor  {
      * @param writeLogDto
      * @return
      */
-    public  static  Boolean write(WriteLogDto writeLogDto){
-        if(hasInit && !Objects.isNull(writeLogDto)) {
-            if(Objects.isNull(writeLogDto.getRequest())) {
+    public  static  Boolean write(WriteLogDto writeLogDto) {
+        if (hasInit && !Objects.isNull(writeLogDto)) {
+            if (Objects.isNull(writeLogDto.getRequest())) {
                 HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
                 writeLogDto.setRequest(request);
             }

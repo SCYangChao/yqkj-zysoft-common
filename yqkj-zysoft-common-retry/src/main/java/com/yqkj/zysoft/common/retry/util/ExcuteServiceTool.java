@@ -21,9 +21,9 @@ public class ExcuteServiceTool {
             try {
                 Object obj = ((ProceedingJoinPoint)joinPoint).proceed();
                 return obj;
-            }catch (Throwable e){
+            }catch (Throwable e) {
                 e.printStackTrace();
-                if(e instanceof ReTryException){
+                if (e instanceof ReTryException) {
                     ReTryException appException = (ReTryException) e;
                     try {
                         Thread.sleep((int)(Math.random()*5001) +50);

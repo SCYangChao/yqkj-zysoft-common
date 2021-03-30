@@ -13,7 +13,7 @@ public enum ProxyEnum implements BaseEnum {
     String name;
     String enName;
 
-    ProxyEnum(String code , String name , String enName){
+    ProxyEnum(String code , String name , String enName) {
         this.code=code;
         this.name=name;
         this.enName=enName;

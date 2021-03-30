@@ -42,20 +42,20 @@ public class HCacheEvictInterceptor implements Ordered , ApplicationContextAware
 
     @Around("@annotation(tzCacheEvict)")
     public Object around(JoinPoint joinPoint, HCacheEvict tzCacheEvict) throws Throwable{
-        if(!Objects.isNull(springEnv) && StringUtils.isNotBlank(springEnv.getApplicationName())){
+        if (!Objects.isNull(springEnv) && StringUtils.isNotBlank(springEnv.getApplicationName())) {
 
             String path = HCacheTool.path(springEnv, tzCacheEvict.path(), joinPoint.getSignature().getName());
             String key = tzCacheEvict.key();
             EvaluationContext context = HCacheTool.getEvaluationContext(((MethodSignature)joinPoint.getSignature()).getParameterNames(), joinPoint.getArgs());
             String  keyValue = HCacheTool.getEvictKey(context, key ,path);
             ICacheProcessor bean = this.applicationContext.getBean(tzCacheEvict.strategy());
-            if(!Objects.isNull(bean)){
+            if (!Objects.isNull(bean)) {
                 bean.evict(keyValue);
             }
             Object obj = ((ProceedingJoinPoint) joinPoint).proceed();
             return obj;
         }else {
-            if(log.isInfoEnabled()){
+            if (log.isInfoEnabled()) {
                 log.info(String.format("缓存没有配置成功,%s" ,joinPoint));
             }
         }

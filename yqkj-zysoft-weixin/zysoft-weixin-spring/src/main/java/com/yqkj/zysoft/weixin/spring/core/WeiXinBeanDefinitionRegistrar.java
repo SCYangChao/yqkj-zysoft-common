@@ -42,11 +42,11 @@ public class WeiXinBeanDefinitionRegistrar implements ImportBeanDefinitionRegist
         String[] basePackage = annotationAttributes.getStringArray("basePackage");
         ProxyEnum proxyEnum = annotationAttributes.getEnum("proxyType");
         String baseUrl = annotationAttributes.getString("baseUrl");
-        if(CollectionToole.isNull(basePackage)){
+        if (CollectionToole.isNull(basePackage)) {
             basePackage = PropertyTool.getBasePackage();
         }
 
-        if(!CollectionToole.isNull((basePackage))) {
+        if (!CollectionToole.isNull((basePackage))) {
             WeiXinClassPathBeanDefinitionScanner weiXinClassPathBeanDefinitionScanner = new WeiXinClassPathBeanDefinitionScanner(registry);
             weiXinClassPathBeanDefinitionScanner.registerFilters();
             weiXinClassPathBeanDefinitionScanner.setResourceLoader(resourceLoader);

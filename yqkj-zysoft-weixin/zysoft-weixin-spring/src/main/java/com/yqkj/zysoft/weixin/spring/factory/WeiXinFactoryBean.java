@@ -33,7 +33,7 @@ public class WeiXinFactoryBean<T> implements FactoryBean<T> {
     @Override
     public T getObject() throws Exception {
 
-        if(ProxyEnum.CGLIB == this.proxyEnum){
+        if (ProxyEnum.CGLIB == this.proxyEnum) {
             return  (T) Proxy.newProxyInstance(interfaceBean.getClassLoader(),
                     new Class[]{interfaceBean},
                     new InvocationHandler() {

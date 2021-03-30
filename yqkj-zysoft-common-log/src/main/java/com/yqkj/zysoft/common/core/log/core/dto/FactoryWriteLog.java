@@ -11,14 +11,14 @@ public class FactoryWriteLog {
      * 实例
      * @return
      */
-    public  static  WriteLogDto instance(){
+    public  static  WriteLogDto instance() {
         return  new WriteLogDto();
     }
     /**
      * 实例
      * @return
      */
-    public  static  WriteLogDto instance(String model , String fun){
+    public  static  WriteLogDto instance(String model , String fun) {
         WriteLogDto writeLogDto = new WriteLogDto();
         writeLogDto.setModel(model);
         writeLogDto.setModelInfo(String.format("%s->%s" , writeLogDto.getModel() , fun));

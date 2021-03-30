@@ -19,7 +19,7 @@ public class WeiXinService {
     private WeinXinAuth weinXinAuth;
 
     @GetMapping("wexin")
-    public  Boolean auth(){
+    public  Boolean auth() {
         Map<String, Object> accessToken = weinXinAuth.getAccessToken();
         System.out.println(accessToken);
         return  Boolean.TRUE;

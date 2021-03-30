@@ -29,7 +29,7 @@ import java.util.Objects;
 
 /**
  * @ClassName LogAspect
- * @Description 
+ * @Description
  * @Author yangchao.cool@gmail.com
  * @Date 2021/3/25 16:43
  * @Version 1.0
@@ -74,7 +74,7 @@ public class LogAspect {
             errrorCode = "500";
             throw e;
         }finally {
-            if(logger.hasDb() && logging.hasDb()) {
+            if (logger.hasDb() && logging.hasDb()) {
                 WriteLogDto instance = FactoryWriteLog.instance();
                 instance.setSys(logger.sys());
                 instance.setModel(logger.model());
@@ -84,7 +84,7 @@ public class LogAspect {
                 String input = logging.input();
                 instance.setRequest(request);
                 instance.setModelInfo(String.format("%s->%s" , logger.value(),logging.value()));
-                if(!Objects.isNull(queryCurrentUser)){
+                if (!Objects.isNull(queryCurrentUser)) {
                     queryCurrentUser.getCurrentUser(instance);
                 }
                 EvaluationContext context = ExpressionTool.getEvaluationContext(((MethodSignature)jp.getSignature()).getParameterNames(),
@@ -92,7 +92,7 @@ public class LogAspect {
                 input = queryInputValue(input, context , request);
                 instance.setInput(input);
                 String output = logging.output();
-                if(StringUtil.isNotBlank(output)){
+                if (StringUtil.isNotBlank(output)) {
                     output =  ExpressionTool.getSpelValue(context , output);
                 }else {
                     output = Objects.isNull(object)?"":object.toString();
@@ -104,7 +104,7 @@ public class LogAspect {
         }
     }
     /**
-     * 
+     *
      * @param input
      * @param context
      * @param request

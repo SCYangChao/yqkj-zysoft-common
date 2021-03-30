@@ -15,9 +15,9 @@ public class PropertyTool {
      * 获取当前运行运行的类路径
      * @return
      */
-    public  static  String[] getBasePackage(){
+    public  static  String[] getBasePackage() {
         String property = System.getProperty(CommonConstant.CURRENT_CLASS);
-        if(StringUtil.isNotBlank(property)){
+        if (StringUtil.isNotBlank(property)) {
             String[]  basePackage = new String[]{property.substring(0,property.lastIndexOf("."))};
             return basePackage;
         }
