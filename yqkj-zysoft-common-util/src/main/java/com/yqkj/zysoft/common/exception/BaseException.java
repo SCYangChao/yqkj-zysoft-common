@@ -7,7 +7,7 @@ package com.yqkj.zysoft.common.exception;
  * @Date 2020/2/19 14:01
  * @Version 1.0
  **/
-public abstract class BaseException extends  RuntimeException{
+public abstract class BaseException extends  RuntimeException {
     /**
      * 系统编码
      */

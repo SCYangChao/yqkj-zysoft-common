@@ -30,6 +30,9 @@ public class WeiXinClassPathBeanDefinitionScanner extends ClassPathBeanDefinitio
         super(registry);
     }
 
+    /**
+     * 设置 包含的注解
+     */
     protected void registerFilters() {
         addIncludeFilter(new AnnotationTypeFilter(WeiXinClient.class));
     }
@@ -40,9 +43,9 @@ public class WeiXinClassPathBeanDefinitionScanner extends ClassPathBeanDefinitio
             GenericBeanDefinition definition;
            for (BeanDefinitionHolder beanDefinitionHolder : beanDefinitionHolders) {
                definition = (GenericBeanDefinition) beanDefinitionHolder.getBeanDefinition();
-               definition.getPropertyValues().add("interfaceBean",definition.getBeanClassName());
-               definition.getPropertyValues().add("proxyEnum" , proxyEnum);
-               definition.getPropertyValues().add("baseUrl" , baseUrl);
+               definition.getPropertyValues().add("interfaceBean", definition.getBeanClassName());
+               definition.getPropertyValues().add("proxyEnum", proxyEnum);
+               definition.getPropertyValues().add("baseUrl", baseUrl);
                definition.setBeanClass(WeiXinFactoryBean.class);
            }
 

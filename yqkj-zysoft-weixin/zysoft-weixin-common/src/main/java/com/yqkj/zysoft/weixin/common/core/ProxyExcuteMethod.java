@@ -16,15 +16,23 @@ import java.util.Objects;
  * @Date 2021/2/19 15:21
  * @Version 1.0
  **/
-public class ProxyExcuteMethod {
+public final class ProxyExcuteMethod {
     /**
-     *
+     * 私有构造方法
+     */
+    private  ProxyExcuteMethod() {
+
+    }
+    /**
+     * @param  baseUrl 基础地址
+     * @param  object 参数
      * @param proxy  代理对象的引用
      * @param method  当前执行的方法
      * 当前执行方法所需的参数
      * 和被代理对象方法有相同的返回值
+     * @return  返回执行逻辑对象
      */
-    public  static  Object proxyInvoke(Method method, Object[] object, Object proxy , String baseUrl) {
+    public  static  Object proxyInvoke(Method method, Object[] object, Object proxy, String baseUrl) {
         Annotation[] annotations = method.getAnnotations();
         WeinXinGet annotationGet = method.getAnnotation(WeinXinGet.class);
         WeinXinPost annotationPost = method.getAnnotation(WeinXinPost.class);

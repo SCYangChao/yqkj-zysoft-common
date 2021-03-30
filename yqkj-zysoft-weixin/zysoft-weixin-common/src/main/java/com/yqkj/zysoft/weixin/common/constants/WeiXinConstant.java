@@ -6,8 +6,11 @@ package com.yqkj.zysoft.weixin.common.constants;
  * @Date 2020/2/19 13:41
  * @Version 1.0
  **/
-public class  WeiXinConstant {
+public final class  WeiXinConstant {
 
+    private  WeiXinConstant() {
+
+    }
     /**
      * 公共参数拼装常量
      */

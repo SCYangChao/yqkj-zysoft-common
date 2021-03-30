@@ -2,6 +2,7 @@ package com.yqkj.zysoft.common.cache.core.annotation;
 
 import com.yqkj.zysoft.common.cache.ICacheProcessor;
 import com.yqkj.zysoft.common.cache.memory.MemoryCacheProcessor;
+import com.yqkj.zysoft.common.constants.CommonConstant;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -32,7 +33,7 @@ public @interface HCache {
      * 默认没有时间限制
      * @return
      */
-    int time() default -1;
+    int time() default CommonConstant.LOSS_ONE_INT;
     /**
      * 策略
      * @return

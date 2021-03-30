@@ -25,6 +25,10 @@
             <version>1.9.2</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.yqkj</groupId>
+            <artifactId>yqkj-zysoft-common-util</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

@@ -35,5 +35,12 @@ public final class CommonConstant {
     /**
      * -1
      */
-    public static  final Long LOSS_ONE = -1L;
+    public static  final Long LOSS_ONE_LONG = -1L;
+    /**
+     * int -1
+     */
+    public static  final int LOSS_ONE_INT = -1;
+
+    public  static  final  int FOUR_INT = 4;
+
 }

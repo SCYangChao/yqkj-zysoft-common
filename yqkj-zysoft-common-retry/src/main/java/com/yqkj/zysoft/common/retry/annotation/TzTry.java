@@ -1,5 +1,6 @@
 package com.yqkj.zysoft.common.retry.annotation;
 
+import com.yqkj.zysoft.common.constants.CommonIntConstant;
 import com.yqkj.zysoft.common.retry.core.TryModel;
 
 import java.lang.annotation.ElementType;
@@ -26,7 +27,7 @@ public @interface TzTry {
      *重试次数 默认2次
      * @return
      */
-    int   tryCount() default  4;
+    int   tryCount() default CommonIntConstant.FOUR;
     /**
      * 尝试策略
      * @return

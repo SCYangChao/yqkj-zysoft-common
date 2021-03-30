@@ -8,38 +8,32 @@ package com.yqkj.zysoft.weixin.common.enums;
  **/
 public enum ProxyEnum implements BaseEnum {
 
-    CGLIB("cglib","cglib","cglib");
+    CGLIB("cglib", "cglib", "cglib");
     String code;
     String name;
     String enName;
 
-    ProxyEnum(String code , String name , String enName) {
-        this.code=code;
-        this.name=name;
-        this.enName=enName;
+    ProxyEnum(String code, String name, String enName) {
+        this.code = code;
+        this.name = name;
+        this.enName = enName;
     }
     /**
-     * 编码
-     *
-     * @return
+     * @return 编码
      */
     @Override
     public String getCode() {
         return code;
     }
     /**
-     * 名称
-     *
-     * @return
+     * @return 名称
      */
     @Override
     public String getName() {
         return name;
     }
     /**
-     * 英文编码
-     *
-     * @return
+     * @return 英文编码
      */
     @Override
     public String getEnName() {

@@ -8,18 +8,15 @@ package com.yqkj.zysoft.weixin.common.enums;
  **/
 public interface BaseEnum {
     /**
-     * 编码
-     * @return
+     * @return 编码
      */
     public  String getCode();
     /**
-     * 名称
-     * @return
+     * @return 名称
      */
     public  String getName();
     /**
-     * 英文编码
-     * @return
+     * @return 文编码
      */
     public String getEnName();
 }

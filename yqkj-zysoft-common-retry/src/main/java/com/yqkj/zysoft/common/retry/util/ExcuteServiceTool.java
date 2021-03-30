@@ -4,6 +4,9 @@ import com.yqkj.zysoft.common.exception.retry.ReTryException;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 
+import static com.yqkj.zysoft.common.constants.CommonIntConstant.FIVE_THOUSAND_AND_ONE;
+import static com.yqkj.zysoft.common.constants.CommonIntConstant.FOUR;
+
 /**
  * @ClassName ExcuteServiceTool
  * @Description
@@ -11,26 +14,36 @@ import org.aspectj.lang.ProceedingJoinPoint;
  * @Date 2021/3/4 11:05
  * @Version 1.0
  **/
-public class ExcuteServiceTool {
+public final class ExcuteServiceTool {
     /**
-     * 执行方法
-     * @return
+     * 私有构造方法
      */
-    public  static  Object  excute(JoinPoint joinPoint , Integer count ) throws Throwable {
-        for (int index = 0; index < count ; index++ ) {
+    private  ExcuteServiceTool() {
+
+    }
+
+    /**
+     *
+     * @param joinPoint 切面
+     * @param count 次数
+     * @return 返回执行数据
+     * @throws Throwable 异常
+     */
+    public  static  Object  excute(JoinPoint joinPoint, Integer count) throws Throwable {
+        for (int index = 0; index < count; index++) {
             try {
-                Object obj = ((ProceedingJoinPoint)joinPoint).proceed();
+                Object obj = ((ProceedingJoinPoint) joinPoint).proceed();
                 return obj;
-            }catch (Throwable e) {
+            } catch (Throwable e) {
                 e.printStackTrace();
                 if (e instanceof ReTryException) {
                     ReTryException appException = (ReTryException) e;
                     try {
-                        Thread.sleep((int)(Math.random()*5001) +50);
+                        Thread.sleep((int) (Math.random() * FIVE_THOUSAND_AND_ONE) + FOUR);
                     } catch (InterruptedException ex) {
                         ex.printStackTrace();
                     }
-                }else {
+                } else {
                     throw  e;
                 }
             }

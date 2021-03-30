@@ -18,7 +18,7 @@
     <!-- import检查-->
     <!-- 避免使用* -->
     <module name="AvoidStarImport">
-      <property name="excludes" value="java.io,java.net,java.lang.Math,java.util"/>
+      <property name="excludes" value="java.io,java.net,java.lang.Math,java.util,java.lang.annotation"/>
       <!-- 实例；import java.util.*;.-->
       <property name="allowClassImports" value="false"/>
       <!-- 实例 ；import static org.junit.Assert.*;-->
@@ -78,9 +78,9 @@
     <module name="UpperEll"/>
 
     <!-- 长度检查 -->
-    <!-- 每行不超过120个字符 -->
+    <!-- 每行不超过150个字符 -->
     <module name="LineLength">
-      <property name="max" value="120" />
+      <property name="max" value="150" />
     </module>
     <!-- 方法不超过50行 -->
     <module name="MethodLength">
@@ -116,7 +116,7 @@
     <!-- 检查修饰符的顺序是否遵照java语言规范，默认public、protected、private、abstract、static、final、transient、volatile、synchronized、native、strictfp -->
     <module name="ModifierOrder"/>
     <!-- 检查接口和annotation中是否有多余修饰符，如接口方法不必使用public -->
-    <module name="RedundantModifier"/>
+    <!--<module name="RedundantModifier" />-->
 
     <!-- 代码块检查 -->
     <!-- 检查是否有嵌套代码块 -->
@@ -192,7 +192,7 @@
     </module>
     <!-- return个数 3个-->
     <module name="ReturnCount">
-      <property name="max" value="3"/>
+      <property name="max" value="4"/>
     </module>
     <!--try catch 异常处理数量 3-->
     <module name="NestedTryDepth ">

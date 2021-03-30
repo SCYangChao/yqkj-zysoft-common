@@ -9,9 +9,11 @@ import java.util.Objects;
  * @Description  树实体
  * @Author yangchao.cool@gmail.com
  * @Date 2021/2/10 14:15
+ * @param  <Id> 树的ID
+ * @param  <PId> 树的上级ID 如果为空则顶级树
  * @Version 1.0
  **/
-public class TreeNode <Id , PId> implements Serializable {
+public class TreeNode <Id, PId> implements Serializable {
     /**
      * ID编码
      */
@@ -39,6 +41,11 @@ public class TreeNode <Id , PId> implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    /**
+     * @param id 属于的ID
+     * @return true 等于上级ID 否则 不是
+     */
     public  Boolean eqPId(Id id) {
         if (Objects.isNull(pId) && Objects.isNull(id)) {
             return Boolean.TRUE;
@@ -60,10 +67,16 @@ public class TreeNode <Id , PId> implements Serializable {
         this.id = id;
     }
 
+    /**
+     * @return 获取上级ID
+     */
     public PId getpId() {
         return pId;
     }
-
+    /**
+     * 设置上级ID
+     * @param pId 上级ID
+     */
     public void setpId(PId pId) {
         this.pId = pId;
     }

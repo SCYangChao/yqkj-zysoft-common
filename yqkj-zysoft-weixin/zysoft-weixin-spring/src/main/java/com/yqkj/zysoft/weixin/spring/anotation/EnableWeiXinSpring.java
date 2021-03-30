@@ -17,24 +17,24 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @EnableWeixin
-@Import(com.yqkj.zysoft.weixin.spring.core.WeiXinBeanDefinitionRegistrar.class )
+@Import(com.yqkj.zysoft.weixin.spring.core.WeiXinBeanDefinitionRegistrar.class)
 public @interface EnableWeiXinSpring {
     /**
      * 扫描的基础路径
      * @return
      */
-    @AliasFor(annotation = EnableWeixin.class , attribute = "basePackage")
+    @AliasFor(annotation = EnableWeixin.class, attribute = "basePackage")
     String[] basePackage() default {};
     /**
      * 代理类型
      * @return
      */
-    @AliasFor(annotation = EnableWeixin.class , attribute = "proxyType")
+    @AliasFor(annotation = EnableWeixin.class, attribute = "proxyType")
     ProxyEnum proxyType() default ProxyEnum.CGLIB;
     /**
      * 微信基础URL
      * @return
      */
-    @AliasFor(annotation = EnableWeixin.class , attribute = "baseUrl")
+    @AliasFor(annotation = EnableWeixin.class, attribute = "baseUrl")
     String baseUrl() default  "https://api.weixin.qq.com";
 }

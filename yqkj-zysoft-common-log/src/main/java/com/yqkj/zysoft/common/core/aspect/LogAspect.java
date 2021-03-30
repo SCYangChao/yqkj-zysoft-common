@@ -10,7 +10,6 @@ import com.yqkj.zysoft.common.core.log.core.service.IQueryCurrentUser;
 import com.yqkj.zysoft.common.core.util.ExpressionTool;
 import com.yqkj.zysoft.common.string.StringUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -38,20 +37,20 @@ import java.util.Objects;
 @Component
 public class LogAspect {
 
-    private static final org.slf4j.Logger log = LoggerFactory.getLogger(LogAspect.class);
+    private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(LogAspect.class);
 
     @Autowired(required = false)
     private IQueryCurrentUser queryCurrentUser;
 
     private  static  final String SUCCESS = "200";
-
     /**
      * 正常日志
-     *
-     * @param jp
+     * @return  执行返回参数
+     * @param jp 切面
      * @throws Exception
      */
-    @Around("@within(com.yqkj.zysoft.common.core.log.annotation.Logger)  && @annotation(com.yqkj.zysoft.common.core.log.annotation.Logging)")
+    @Around("@within(com.yqkj.zysoft.common.core.log.annotation.Logger) " +
+            " && @annotation(com.yqkj.zysoft.common.core.log.annotation.Logging)")
     public Object doLogging(ProceedingJoinPoint jp) throws Throwable {
         long startTime = System.currentTimeMillis();
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();

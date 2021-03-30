@@ -32,27 +32,35 @@ import java.util.Objects;
  **/
 @Aspect
 @Component
-public class HCacheInterceptor implements Ordered , ApplicationContextAware {
+public class HCacheInterceptor implements Ordered, ApplicationContextAware {
 
-    public static final Log log = LogFactory.getLog(HCacheInterceptor.class);
+    public static final Log LOG = LogFactory.getLog(HCacheInterceptor.class);
 
     @Autowired
     private SpringEnv springEnv;
 
     private ApplicationContext applicationContext;
 
+    /**
+     *
+     * @param joinPoint 切面包装参数
+     * @param tzCache 缓存
+     * @return 返回执行参数
+     * @throws Throwable  异常
+     */
     @Around("@annotation(tzCache)")
-    public Object around(JoinPoint joinPoint, HCache tzCache) throws Throwable{
+    public Object around(JoinPoint joinPoint, HCache tzCache) throws Throwable {
         if (!Objects.isNull(springEnv) && StringUtils.isNotBlank(springEnv.getApplicationName())) {
             String path = HCacheTool.path(springEnv, tzCache.path(), joinPoint.getSignature().getName());
             String key = tzCache.key();
             /**
              * 如果配置了Key 那么这个值就可能是一个PEL
              */
-            String keyValue="";
+            String keyValue;
             if (StringUtils.isNotBlank(key)) {
-                EvaluationContext context = HCacheTool.getEvaluationContext(((MethodSignature)joinPoint.getSignature()).getParameterNames(), joinPoint.getArgs());
-                keyValue = HCacheTool.getKey(context, key , path);
+                EvaluationContext context = HCacheTool.getEvaluationContext(((MethodSignature) joinPoint.getSignature()).getParameterNames(),
+                        joinPoint.getArgs());
+                keyValue = HCacheTool.getKey(context, key, path);
                 ICacheProcessor bean = this.applicationContext.getBean(tzCache.strategy());
                 if (!Objects.isNull(bean)) {
                     Object cacheValue = bean.get(keyValue);
@@ -66,14 +74,14 @@ public class HCacheInterceptor implements Ordered , ApplicationContextAware {
                     return obj;
                 }
 
-            }else {
-                if (log.isInfoEnabled()) {
-                    log.info(String.format("缓存没有配置成功 ,缺失KEY,%s" ,joinPoint));
+            } else {
+                if (LOG.isInfoEnabled()) {
+                    LOG.info(String.format("缓存没有配置成功 ,缺失KEY,%s", joinPoint));
                 }
             }
-        }else {
-            if (log.isInfoEnabled()) {
-                log.info(String.format("缓存没有配置成功,%s" ,joinPoint));
+        } else {
+            if (LOG.isInfoEnabled()) {
+                LOG.info(String.format("缓存没有配置成功,%s", joinPoint));
             }
         }
         return ((ProceedingJoinPoint) joinPoint).proceed();
@@ -82,11 +90,11 @@ public class HCacheInterceptor implements Ordered , ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext=applicationContext;
+        this.applicationContext = applicationContext;
     }
 
     @Override
     public int getOrder() {
-        return Integer.MIN_VALUE+1;
+        return Integer.MIN_VALUE + 1;
     }
 }

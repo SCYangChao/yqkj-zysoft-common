@@ -10,12 +10,16 @@ import java.util.Date;
  * @Date 2021/3/25 16:30
  * @Version 1.0
  **/
-public class DateTool {
+public final class DateTool {
+    /**
+     * 私有构成函数
+     */
+    private  DateTool() { }
     /**
      * 加月份
-     * @param date
-     * @param months
-     * @return
+     * @param date 时间
+     * @param months 加月
+     * @return 返回计算好的时间
      */
     public static Date addMonths(Date date, int months) {
         Calendar c = Calendar.getInstance();

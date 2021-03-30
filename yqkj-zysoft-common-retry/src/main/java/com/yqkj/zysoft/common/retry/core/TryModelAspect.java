@@ -22,18 +22,25 @@ import org.springframework.stereotype.Component;
 public class TryModelAspect implements Ordered {
 
     public int getOrder() {
-        return 2147483647;
+        return Integer.MIN_VALUE;
     }
 
+    /**
+     *
+     * @param joinPoint 切面
+     * @param tzTry 注解
+     * @return 返回值
+     * @throws Throwable 异常
+     */
     @Around("@annotation(tzTry)")
     public Object around(JoinPoint joinPoint, TzTry tzTry) throws Throwable {
 
         boolean hasOpen = tzTry.hasOpen();
 
         if (hasOpen) {
-            return  ExcuteServiceTool.excute(joinPoint,tzTry.tryCount());
-        }else {
-            return  ((ProceedingJoinPoint)joinPoint).proceed();
+            return  ExcuteServiceTool.excute(joinPoint, tzTry.tryCount());
+        } else {
+            return  ((ProceedingJoinPoint) joinPoint).proceed();
         }
 
     }

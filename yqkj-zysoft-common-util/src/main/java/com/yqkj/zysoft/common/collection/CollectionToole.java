@@ -11,7 +11,7 @@ import java.util.function.Predicate;
 import java.util.function.ToDoubleFunction;
 import java.util.stream.Collectors;
 
-import static com.yqkj.zysoft.common.constants.CommonConstant.LOSS_ONE;
+import static com.yqkj.zysoft.common.constants.CommonConstant.LOSS_ONE_LONG;
 
 /**
  * @author yangchao.cool@gmail.com
@@ -589,7 +589,7 @@ public final class CollectionToole {
     public  static  List<Long> requirOneDataList(List<Long> list) {
         if (CollectionToole.isNull(list)) {
             List<Long> ins = new ArrayList<>();
-            ins.add(LOSS_ONE);
+            ins.add(LOSS_ONE_LONG);
             return  ins;
         }
         return list;

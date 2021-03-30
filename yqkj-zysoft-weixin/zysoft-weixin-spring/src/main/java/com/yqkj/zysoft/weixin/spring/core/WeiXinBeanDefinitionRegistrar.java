@@ -1,7 +1,6 @@
 package com.yqkj.zysoft.weixin.spring.core;
 
 import com.yqkj.zysoft.common.collection.CollectionToole;
-import com.yqkj.zysoft.common.string.StringUtil;
 import com.yqkj.zysoft.common.system.PropertyTool;
 import com.yqkj.zysoft.weixin.common.enums.ProxyEnum;
 import com.yqkj.zysoft.weixin.spring.anotation.EnableWeiXinSpring;
@@ -20,7 +19,7 @@ import org.springframework.core.type.AnnotationMetadata;
  * @Date 2020/2/18 10:19
  * @Version 1.0
  **/
-public class WeiXinBeanDefinitionRegistrar implements ImportBeanDefinitionRegistrar , ResourceLoaderAware {
+public class WeiXinBeanDefinitionRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoaderAware {
 
 
     private  ResourceLoader resourceLoader;
@@ -38,7 +37,8 @@ public class WeiXinBeanDefinitionRegistrar implements ImportBeanDefinitionRegist
      */
     @Override
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
-        AnnotationAttributes annotationAttributes = AnnotationAttributes.fromMap(importingClassMetadata.getAnnotationAttributes(EnableWeiXinSpring.class.getName()));
+        AnnotationAttributes annotationAttributes = AnnotationAttributes.fromMap(importingClassMetadata.
+                                                            getAnnotationAttributes(EnableWeiXinSpring.class.getName()));
         String[] basePackage = annotationAttributes.getStringArray("basePackage");
         ProxyEnum proxyEnum = annotationAttributes.getEnum("proxyType");
         String baseUrl = annotationAttributes.getString("baseUrl");

@@ -13,6 +13,7 @@ import java.lang.reflect.Method;
  * @Description
  * @Author yangchao.cool@gmail.com
  * @Date 2021/2/18 14:18
+ * @param  <T>  对象
  * @Version 1.0
  **/
 public class WeiXinFactoryBean<T> implements FactoryBean<T> {
@@ -30,6 +31,11 @@ public class WeiXinFactoryBean<T> implements FactoryBean<T> {
     public WeiXinFactoryBean() {
     }
 
+    /**
+     *
+     * @return 返回参数T
+     * @throws Exception
+     */
     @Override
     public T getObject() throws Exception {
 
@@ -46,7 +52,7 @@ public class WeiXinFactoryBean<T> implements FactoryBean<T> {
                          * @throws Throwable
                          */
                         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                            return  ProxyExcuteMethod.proxyInvoke(method , args , proxy , baseUrl);
+                            return  ProxyExcuteMethod.proxyInvoke(method, args, proxy, baseUrl);
                         }
                     });
         }

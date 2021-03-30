@@ -24,8 +24,7 @@ public class SpringEnv implements EnvironmentAware, InitializingBean {
         /**
          * 项目名称 如果获取不到 就直接抛异常
          */
-        String applicationName = this.environment.getProperty("spring.application.name");
-        this.applicationName=applicationName;
+        this.applicationName = this.environment.getProperty("spring.application.name");
     }
 
     public String getApplicationName() {
@@ -34,6 +33,6 @@ public class SpringEnv implements EnvironmentAware, InitializingBean {
 
     @Override
     public void setEnvironment(Environment environment) {
-        this.environment=environment;
+        this.environment = environment;
     }
 }
