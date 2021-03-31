@@ -12,7 +12,8 @@ import com.yqkj.zysoft.common.core.log.core.dto.WriteLogDto;
 public interface IQueryCurrentUser {
     /**
      * 获取当前用户名称
-     * @return
+     * @param writeLogDto 日志对象
+     * @return true 处理成功 false 处理失败
      */
     public  Boolean  getCurrentUser(WriteLogDto writeLogDto);
 

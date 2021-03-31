@@ -15,6 +15,12 @@ public final class CommonIntConstant {
 
     public  static  final  int FOUR = 4;
 
+    public  static  final  int TWELVE = 12;
+
+    public  static  final  int TWENTY = 20;
+
+    public  static  final  int TWO_THOUSAND = 2000;
+
     public  static  final  int FIVE_THOUSAND_AND_ONE = 5001;
 
 

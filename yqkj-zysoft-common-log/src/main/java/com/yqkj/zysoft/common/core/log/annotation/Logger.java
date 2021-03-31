@@ -9,28 +9,25 @@ import java.lang.annotation.*;
  * @Date 2021/3/19 10:16
  * @Version 1.0
  **/
-@Target(value={ElementType.FIELD,ElementType.PARAMETER,ElementType.METHOD,ElementType.TYPE})
+@Target(value = {ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 public @interface Logger {
     /**
      *
-     * @return
+     * @return 值
      */
     String value();
     /**
-     * 是否入库
-     * @return
+     * @return 是否入数据库
      */
     boolean hasDb() default  false;
     /**
-     * 系统
-     * @return
+     * @return 系统
      */
     String sys() default "station";
     /**
-     * 模块
-     * @return
+     * @return 模块
      */
     String model() default "station";
 }

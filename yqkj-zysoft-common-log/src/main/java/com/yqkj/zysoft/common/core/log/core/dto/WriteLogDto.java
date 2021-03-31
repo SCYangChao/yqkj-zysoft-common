@@ -67,6 +67,11 @@ public class WriteLogDto implements Serializable {
         return sys;
     }
 
+    /**
+     *
+     * @param sys 设置系统名称
+     * @return 返回当前对象
+     */
     public WriteLogDto setSys(String sys) {
         this.sys = sys;
         return  this;
@@ -76,6 +81,10 @@ public class WriteLogDto implements Serializable {
         return model;
     }
 
+    /**
+     * @param model 设置模块
+     * @return 返回当前对象
+     */
     public WriteLogDto setModel(String model) {
         this.model = model;
         return this;
@@ -85,6 +94,10 @@ public class WriteLogDto implements Serializable {
         return input;
     }
 
+    /**
+     * @param input 入参
+     * @return 返回当前实例
+     */
     public WriteLogDto setInput(String input) {
         this.input = input;
         return this;
@@ -94,6 +107,10 @@ public class WriteLogDto implements Serializable {
         return logStatus;
     }
 
+    /**
+     * @param logStatus 设置状态
+     * @return 返回实例
+     */
     public WriteLogDto setLogStatus(String logStatus) {
         this.logStatus = logStatus;
         return  this;
@@ -103,6 +120,10 @@ public class WriteLogDto implements Serializable {
         return userInfo;
     }
 
+    /**
+     * @param userInfo 用户信息
+     * @return 返回
+     */
     public WriteLogDto setUserInfo(String userInfo) {
         this.userInfo = userInfo;
         return  this;
@@ -112,6 +133,11 @@ public class WriteLogDto implements Serializable {
         return ip;
     }
 
+    /**
+     *
+     * @param ip 设置IP
+     * @return 返回当前实例
+     */
     public WriteLogDto setIp(String ip) {
         this.ip = ip;
         return this;
@@ -121,6 +147,11 @@ public class WriteLogDto implements Serializable {
         return content;
     }
 
+    /**
+     *
+     * @param content 设置输出
+     * @return 返回当前实例
+     */
     public WriteLogDto setContent(String content) {
         this.content = content;
         return this;

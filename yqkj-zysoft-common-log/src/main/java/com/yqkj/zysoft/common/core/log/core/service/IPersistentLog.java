@@ -12,7 +12,8 @@ import com.yqkj.zysoft.common.core.log.core.dto.WriteLogDto;
 public interface IPersistentLog {
     /**
      * 获取当前用户名称
-     * @return
+     * @param writeLogDto  日志对象
+     * @return true 保存成功 false 保存失败
      */
     public  Boolean  save(WriteLogDto writeLogDto);
 }

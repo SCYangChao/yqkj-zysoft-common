@@ -47,10 +47,10 @@ public class LogAspect {
      * 正常日志
      * @return  执行返回参数
      * @param jp 切面
-     * @throws Exception
+     * @throws Throwable 异常
      */
-    @Around("@within(com.yqkj.zysoft.common.core.log.annotation.Logger) " +
-            " && @annotation(com.yqkj.zysoft.common.core.log.annotation.Logging)")
+    @Around("@within(com.yqkj.zysoft.common.core.log.annotation.Logger) "
+            + " && @annotation(com.yqkj.zysoft.common.core.log.annotation.Logging)")
     public Object doLogging(ProceedingJoinPoint jp) throws Throwable {
         long startTime = System.currentTimeMillis();
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
@@ -72,7 +72,7 @@ public class LogAspect {
             errorMsg = e.getMessage();
             errrorCode = "500";
             throw e;
-        }finally {
+        } finally {
             if (logger.hasDb() && logging.hasDb()) {
                 WriteLogDto instance = FactoryWriteLog.instance();
                 instance.setSys(logger.sys());
@@ -82,19 +82,19 @@ public class LogAspect {
                 instance.setLogStatus(errrorCode);
                 String input = logging.input();
                 instance.setRequest(request);
-                instance.setModelInfo(String.format("%s->%s" , logger.value(),logging.value()));
+                instance.setModelInfo(String.format("%s->%s", logger.value(), logging.value()));
                 if (!Objects.isNull(queryCurrentUser)) {
                     queryCurrentUser.getCurrentUser(instance);
                 }
-                EvaluationContext context = ExpressionTool.getEvaluationContext(((MethodSignature)jp.getSignature()).getParameterNames(),
-                        jp.getArgs() , object,instance.getUserInfo(), request);
-                input = queryInputValue(input, context , request);
+                EvaluationContext context = ExpressionTool.getEvaluationContext(((MethodSignature) jp.getSignature()).getParameterNames(),
+                        jp.getArgs(), object, instance.getUserInfo(), request);
+                input = queryInputValue(input, context, request);
                 instance.setInput(input);
                 String output = logging.output();
                 if (StringUtil.isNotBlank(output)) {
-                    output =  ExpressionTool.getSpelValue(context , output);
-                }else {
-                    output = Objects.isNull(object)?"":object.toString();
+                    output =  ExpressionTool.getSpelValue(context, output);
+                } else {
+                    output = Objects.isNull(object) ? "" : object.toString();
                 }
                 instance.setContent(output);
                 String hasResult = logging.hasResult();
@@ -104,14 +104,14 @@ public class LogAspect {
     }
     /**
      *
-     * @param input
-     * @param context
-     * @param request
-     * @return
-     * @throws IOException
+     * @param input 入参
+     * @param context 上下文
+     * @param request 请求参数
+     * @return 返回值
+     * @throws IOException Io 异常
      */
-    private String queryInputValue(String input, EvaluationContext context , HttpServletRequest request) throws IOException {
-        input =  ExpressionTool.getSpelValue(context , input);
+    private String queryInputValue(String input, EvaluationContext context, HttpServletRequest request) throws IOException {
+        input =  ExpressionTool.getSpelValue(context, input);
         return input;
     }
 

@@ -9,34 +9,28 @@ import java.lang.annotation.*;
  * @Date 2021/3/19 10:14
  * @Version 1.0
  **/
-@Target(value={ElementType.FIELD,ElementType.PARAMETER,ElementType.METHOD,ElementType.TYPE})
+@Target(value = {ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 public @interface Logging {
  /**
-  * 数据模块名称
-   * @return
+   * @return 数据模块名称
   */
  String value();
  /**
-  * 返回的表达式是否能成功
-  * @return
+  * @return 返回的表达式是否能成功
   */
  String hasResult() default "";
  /**
-  * 输入 可支持EL表达式
-  * @return
+  * @return 输入 可支持EL表达式
   */
  String input()  default  "";
  /**
-  * 输出 可支持EL表达式
-  * @return
+  * @return 输出 可支持EL表达式
   */
  String output() default "";
-
  /**
-  * 是否入库
-  * @return
+  * @return 是否入库
   */
  boolean hasDb() default  true;
 }

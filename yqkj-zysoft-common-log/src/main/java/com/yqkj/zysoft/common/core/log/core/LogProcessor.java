@@ -17,6 +17,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import static com.yqkj.zysoft.common.constants.CommonIntConstant.*;
+
 /**
  * @ClassName LogProcessor
  * @Description 日志处理器
@@ -24,7 +26,13 @@ import java.util.concurrent.TimeUnit;
  * @Date 2021/3/19 10:21
  * @Version 1.0
  **/
-public class LogProcessor  {
+public final class  LogProcessor  {
+    /**
+     * 私有构造方法
+     */
+    private LogProcessor() {
+
+    }
     /**
      * 是否初始化成功
      */
@@ -32,7 +40,8 @@ public class LogProcessor  {
     /**
      *日志线程池
      */
-    public  static  final  ExecutorService WRITELOG_EXECUTOR = new ThreadPoolExecutor(1, 1,0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
+    public  static  final  ExecutorService WRITELOG_EXECUTOR = new ThreadPoolExecutor(1, 1,
+            0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
     /**
      * 日志持久化
      */
@@ -42,27 +51,30 @@ public class LogProcessor  {
      */
     private  static IQueryCurrentUser iQueryCurrentUser;
 
-    private  static Integer  writeLog = 2000;
+    private  static Integer  writeLog = TWO_THOUSAND;
     /**
      *  日志工作队列
      */
-    private  static LinkedBlockingQueue<WriteLogDto>   WRITELOGQUEUE;
+    private  static LinkedBlockingQueue<WriteLogDto> writeLogQueue;
 
     /**
      * 外界在初始之前可以初始化这个数据
-     * @param writeLog
+     * @param writeLog 日志队列个数
      */
     public static void setWriteLog(Integer writeLog) {
         LogProcessor.writeLog = writeLog;
     }
     /**
      * 初始化
+     * @param persistentLog 持久化
+     * @param queryCurrentUser 当前用户
      */
-    public  static void  init(IPersistentLog persistentLog , IQueryCurrentUser queryCurrentUser) {
-        WRITELOGQUEUE = new LinkedBlockingQueue<>();
+    public  static void  init(IPersistentLog persistentLog, IQueryCurrentUser queryCurrentUser) {
+        writeLogQueue = new LinkedBlockingQueue<>();
         iPersistentLog = persistentLog;
         iQueryCurrentUser = queryCurrentUser;
-        if (Objects.isNull(iPersistentLog) || Objects.isNull(queryCurrentUser)) {
+        if (!Objects.isNull(iPersistentLog) && !Objects.isNull(queryCurrentUser)) {
+            hasInit = Boolean.TRUE;
         }
     }
     /**
@@ -72,14 +84,14 @@ public class LogProcessor  {
         WRITELOG_EXECUTOR.submit((Runnable) () -> {
             while (true) {
                 try {
-                    WriteLogDto poll = WRITELOGQUEUE.poll(20, TimeUnit.SECONDS);
+                    WriteLogDto poll = writeLogQueue.poll(TWENTY, TimeUnit.SECONDS);
                     if (!Objects.isNull(poll)) {
                         iQueryCurrentUser.getCurrentUser(poll);
-                        poll.setInput(StringUtil.cutLenStr(poll.getInput() , 512));
-                        poll.setContent(StringUtil.cutLenStr(poll.getContent() , 2000));
+                        poll.setInput(StringUtil.cutLenStr(poll.getInput(), TWO_THOUSAND));
+                        poll.setContent(StringUtil.cutLenStr(poll.getContent(), TWO_THOUSAND));
                         poll.setIp(IPTool.getIpAddr(poll.getRequest()));
                         poll.setCreateTime(new Date());
-                        poll.setExpirTime(DateTool.addMonths(poll.getCreateTime(), 12));
+                        poll.setExpirTime(DateTool.addMonths(poll.getCreateTime(), TWELVE));
                         iPersistentLog.save(poll);
                     }
                 } catch (Throwable e) {
@@ -91,8 +103,8 @@ public class LogProcessor  {
     }
     /**
      * 日志写入到队列中
-     * @param writeLogDto
-     * @return
+     * @param writeLogDto 日志对象
+     * @return 是否成功
      */
     public  static  Boolean write(WriteLogDto writeLogDto) {
         if (hasInit && !Objects.isNull(writeLogDto)) {
@@ -101,7 +113,7 @@ public class LogProcessor  {
                 writeLogDto.setRequest(request);
             }
 
-            WRITELOGQUEUE.add(writeLogDto);
+            writeLogQueue.add(writeLogDto);
         }
         return Boolean.TRUE;
     }
