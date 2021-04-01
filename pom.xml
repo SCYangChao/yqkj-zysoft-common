@@ -27,9 +27,36 @@
         <pagehelper-version>5.0.0</pagehelper-version>
         <spring.version>5.2.10.RELEASE</spring.version>
         <servlet-api.version>3.1.0</servlet-api.version>
+        <apache.httpclient.verison>4.5.12</apache.httpclient.verison>
+        <page.version>5.0.0</page.version>
+        <druid.version>1.2.5</druid.version>
     </properties>
     <dependencyManagement>
         <dependencies>
+            <!--分页组件-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${page.version}</version>
+            </dependency>
+            <!--连接池-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <!--分页-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${page.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${apache.httpclient.verison}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
@@ -52,6 +79,11 @@
                 <version>${pagehelper-version}</version>
             </dependency>
             <!--自开发包-->
+            <dependency>
+                <groupId>com.yqkj</groupId>
+                <artifactId>yqkj-zysoft-common-db-common</artifactId>
+                <version>${sub.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.yqkj</groupId>
                 <artifactId>yqkj-zysoft-common-util</artifactId>
