@@ -15,9 +15,8 @@
     <artifactId>yqkj-zysoft-common-db-mybatis-plus</artifactId>
     <dependencies>
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus</artifactId>
-            <version>3.4.2</version>
+            <groupId>com.yqkj</groupId>
+            <artifactId>yqkj-zysoft-common-db-common</artifactId>
         </dependency>
     </dependencies>
 

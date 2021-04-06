@@ -14,4 +14,10 @@
         数据库连接配置
     </description>
     <artifactId>yqkj-zysoft-common-db-common</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.yqkj</groupId>
+            <artifactId>yqkj-zysoft-common-util</artifactId>
+        </dependency>
+    </dependencies>
 </project>
